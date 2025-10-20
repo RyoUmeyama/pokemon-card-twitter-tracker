@@ -1,21 +1,9 @@
 # Pokemon Card Twitter Tracker - Claude Code Instructions
 
+⚠️ **重要**: このプロジェクトは `/Users/r.umeyama/work/.claude/CLAUDE.md` の共通ルールに従います。
+特に **README更新ルール** と **メール通知設定** を必ず確認してください。
+
 このプロジェクトは、X (Twitter)からポケモンカード抽選情報を自動収集するシステムです。
-
-## 📋 README更新ルール（重要）
-
-**コードに変更を加えた場合、必ずREADME.mdを更新してください。**
-
-### 更新が必要な場合
-- 実行スケジュールの変更
-- 監視アカウントの追加・削除
-- 検索クエリの変更
-- 新機能の追加
-
-### 更新すべきセクション
-- `## 🎯 機能`: 実行頻度などの基本情報
-- `## 📧 GitHub Actions 自動実行`: スケジュール情報
-- `## 📝 今後の拡張予定`: 完了した機能にチェックマーク
 
 ## ⚠️ Twitter API制限（重要）
 
@@ -37,15 +25,13 @@
   2. `max_results`を減らす（100 → 50）
   3. ハッシュタグ検索を無効化
 
-## 📧 メール通知設定
+## 🔑 GitHub Secrets設定
 
-GitHub Secretsで以下を設定:
+### Twitter API
 - `TWITTER_BEARER_TOKEN`: X API Bearer Token
-- `SMTP_SERVER`: smtp.gmail.com
-- `SMTP_PORT`: 587
-- `SMTP_USERNAME`: 完全なGmailアドレス（@gmail.com含む）
-- `SMTP_PASSWORD`: Gmailアプリパスワード（16文字、スペースなし）
-- `RECIPIENT_EMAIL`: 通知先メールアドレス
+
+### メール通知
+メール通知設定の詳細は `/Users/r.umeyama/work/.claude/CLAUDE.md` を参照してください。
 
 ## 🔍 監視対象
 
