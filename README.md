@@ -7,7 +7,7 @@ X (旧Twitter) から @pokecamatomeru などのアカウントのポケモンカ
 - **指定アカウント監視**: @pokecamatomeru などのアカウントからツイート取得
 - **ハッシュタグ検索**: (#ポケカ OR #ポケモンカード OR #pokemon OR #ポケモン) AND (#抽選 OR #抽選情報)
 - **自動フィルタリング**: 抽選関連キーワードで自動検出
-- **GitHub Actions**: 毎日9:00、18:00 JST自動実行
+- **GitHub Actions**: 毎日9:00 JST自動実行（Twitter APIレート制限対策のため1日1回）
 - **メール通知**: 新しい抽選情報が見つかった場合に自動通知
 - **JSON形式保存**: 全ツイートデータを保存
 
@@ -104,7 +104,7 @@ tweets = fetcher.fetch_user_tweets(
 
 ### 実行スケジュール
 - 毎日9:00 JST (00:00 UTC)
-- 毎日18:00 JST (09:00 UTC)
+- ⚠️ Twitter API v2 Basicプランのレート制限対策のため、1日1回に制限
 
 ### GitHub Secretsの設定
 
