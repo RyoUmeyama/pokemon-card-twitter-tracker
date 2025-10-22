@@ -4,12 +4,12 @@ X (旧Twitter) から @pokecamatomeru などのアカウントのポケモンカ
 
 ## 🎯 機能
 
-- **指定アカウント監視**: @pokecamatomeru などのアカウントからツイート取得
-- **ハッシュタグ検索**: (#ポケカ OR #ポケモンカード OR #pokemon OR #ポケモン) AND (#抽選 OR #抽選情報)
+- **指定アカウント監視**: @pokecamatomeru のツイートを取得（1日最大10件）
 - **自動フィルタリング**: 抽選関連キーワードで自動検出
-- **GitHub Actions**: 毎日9:00 JST自動実行（Twitter APIレート制限対策のため1日1回）
+- **GitHub Actions**: 毎日9:00 JST自動実行（Twitter API Free プラン対応）
 - **メール通知**: 新しい抽選情報が見つかった場合に自動通知
 - **JSON形式保存**: 全ツイートデータを保存
+- ⚠️ **ハッシュタグ検索**: Free プラン対応のため無効化中
 
 ## 🔑 セットアップ
 
@@ -23,8 +23,10 @@ X (旧Twitter) から @pokecamatomeru などのアカウントのポケモンカ
 - Read (ツイート読み取り)
 
 **料金プラン**
-- Free プラン: 月間1,500ツイート取得まで無料
+- ✅ **Free プラン**: 月間100ツイート（現在使用中）
 - Basic プラン: $100/月（月間10,000ツイート）
+
+⚠️ **重要**: Free プランの制限により、1日10ツイート程度に抑えています。
 
 ### 2. 環境変数の設定
 
@@ -95,8 +97,8 @@ tweets = fetcher.fetch_user_tweets(
 ## ⚠️ 注意事項
 
 - Twitter API の利用制限に注意してください
-- Free プランは月間1,500ツイートまで
-- レート制限: 15分あたり900リクエスト
+- **Free プランは月間100ツイートまで**（現在使用中）
+- レート制限: 15分ごとにリセット
 
 ## 📧 GitHub Actions 自動実行
 
@@ -104,7 +106,7 @@ tweets = fetcher.fetch_user_tweets(
 
 ### 実行スケジュール
 - 毎日9:00 JST (00:00 UTC)
-- ⚠️ Twitter API v2 Basicプランのレート制限対策のため、1日1回に制限
+- ⚠️ Twitter API Free プランの月間100ツイート制限対策のため、1日1回に制限
 
 ### GitHub Secretsの設定
 
@@ -120,12 +122,12 @@ tweets = fetcher.fetch_user_tweets(
 ## 📊 出力ファイル
 
 - `pokecamatomeru_tweets.json`: @pokecamatomeru のツイート
-- `hashtag_tweets.json`: ハッシュタグ検索結果
 - `all_lottery_tweets.json`: 統合結果（重複除外）
+- ~~`hashtag_tweets.json`~~: ハッシュタグ検索結果（Free プラン対応のため無効化中）
 
 ## 📝 今後の拡張予定
 
-- [x] ハッシュタグ検索機能
+- [ ] ハッシュタグ検索機能の再有効化（Twitter API Basic プラン以上が必要）
 - [x] GitHub Actions で定期実行
 - [x] メール通知機能
 - [ ] 複数アカウントの監視
