@@ -54,7 +54,7 @@ class TwitterFetcher:
             tweets = self.client.get_users_tweets(
                 id=user_id,
                 start_time=start_time,
-                max_results=100,  # 最大100件
+                max_results=10,  # Free プラン対応: 月間100件制限のため1日3件程度に抑える
                 tweet_fields=['created_at', 'text', 'public_metrics'],
                 expansions=['referenced_tweets.id']
             )
@@ -206,19 +206,21 @@ def main():
         all_tweets.extend(user_tweets)
         fetcher.save_tweets(user_tweets, 'pokecamatomeru_tweets.json')
 
-    # 2. ハッシュタグ検索
-    print("\n" + "=" * 60)
-    print("📋 2. ハッシュタグで検索")
-    print("=" * 60)
-
-    hashtag_tweets = fetcher.search_tweets_by_hashtags(
-        since_date=since_date,
-        max_results=100
-    )
-
-    if hashtag_tweets:
-        all_tweets.extend(hashtag_tweets)
-        fetcher.save_tweets(hashtag_tweets, 'hashtag_tweets.json')
+    # 2. ハッシュタグ検索（Free プラン対応のため無効化）
+    # Twitter API Free プランは月間100ツイートまでのため、
+    # ハッシュタグ検索は無効化し、@pokecamatomeru のみに絞る
+    # print("\n" + "=" * 60)
+    # print("📋 2. ハッシュタグで検索")
+    # print("=" * 60)
+    #
+    # hashtag_tweets = fetcher.search_tweets_by_hashtags(
+    #     since_date=since_date,
+    #     max_results=10
+    # )
+    #
+    # if hashtag_tweets:
+    #     all_tweets.extend(hashtag_tweets)
+    #     fetcher.save_tweets(hashtag_tweets, 'hashtag_tweets.json')
 
     # 3. 統合結果を保存
     if all_tweets:
